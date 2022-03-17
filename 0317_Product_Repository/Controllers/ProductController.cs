@@ -18,7 +18,12 @@ namespace _0317_Product_Repository.Controllers
         }
         public IActionResult Index()
         {
-            var productList = _productService.GetAllProducts();
+            var productList = _productService.GetAllProducts().Select(x => new ProductIndexViewModel.ProductData
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Price = x.Price
+            });
 
             var res = new ProductIndexViewModel
             {
@@ -31,7 +36,17 @@ namespace _0317_Product_Repository.Controllers
 
         public IActionResult ProductDetail(int id)
         {
-            var product = _productService.GetProduct(id);
+            var productDTO = _productService.GetProduct(id);
+
+            var product = new ProductDetailViewModel.ProductData
+            {
+                Id = productDTO.Id,
+                Name = productDTO.Name,
+                Price = productDTO.Price,
+                Count = productDTO.Count,
+                Tag = productDTO.Price >= 200 ? "Expensive" : "Cheap",
+                IsEmptyStock = productDTO.Count == 0
+            };
 
             var res = new ProductDetailViewModel()
             {
@@ -58,17 +73,31 @@ namespace _0317_Product_Repository.Controllers
         public IActionResult Edit(int id)
         {
             var theProduct = _productService.GetProduct(id);
+            var product = new ProductEditViewModel.ProductData
+            {
+                Id = theProduct.Id,
+                Name = theProduct.Name,
+                Price = theProduct.Price,
+                Count = theProduct.Count
+            };
             var res = new ProductEditViewModel()
             {
-                Product = theProduct
+                Product = product
             };
             return View("ProductEdit",res);
         }
 
         [HttpPost]
-        public IActionResult Edit(ProductDto request)
+        public IActionResult Edit(ProductDetailViewModel.ProductData request)
         {
-            _productService.ProductUpdate(request);
+            var productDTO = new ProductDto
+            {
+                Id = request.Id,
+                Name = request.Name,
+                Price = request.Price,
+                Count = request.Count
+            };
+            _productService.ProductUpdate(productDTO);
 
             return RedirectToAction(nameof(Index));
         }
