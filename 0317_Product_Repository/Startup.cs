@@ -1,4 +1,6 @@
 using _0317_Product_Repository.Models.DBEntity;
+using _0317_Product_Repository.Repositories;
+using _0317_Product_Repository.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +31,12 @@ namespace _0317_Product_Repository
             {
                 options.UseSqlServer(Configuration.GetConnectionString("ProductDB"));
             });
+
+            // µù¥U DI
+            services.AddTransient<DBRepository, DBRepository>();
+            services.AddTransient<ProductRepository, ProductRepository>();
+            services.AddTransient<ProductService, ProductService>();
+
             services.AddControllersWithViews();
         }
 
