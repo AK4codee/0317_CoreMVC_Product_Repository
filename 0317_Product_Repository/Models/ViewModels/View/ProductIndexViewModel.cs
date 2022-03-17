@@ -6,6 +6,6 @@ namespace _0317_Product_Repository.Models.ViewModels.View
     public class ProductIndexViewModel
     {
         public string Title { get; set; }
-        public IEnumerable<ProductViewModel> ProductList { get; set; }
+        public IEnumerable<ProductDto> ProductList { get; set; }
     }
 }

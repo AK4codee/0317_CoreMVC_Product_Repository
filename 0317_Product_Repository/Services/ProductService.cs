@@ -17,9 +17,9 @@ namespace _0317_Product_Repository.Services
 
         // 業務邏輯
         // 原本寫在 Controller
-        public IEnumerable<ProductViewModel> GetAllProducts()
+        public IEnumerable<ProductDto> GetAllProducts()
         {
-            var ProductList = _productRepository.GetAll<Product>().Select(x => new ProductViewModel()
+            var ProductList = _productRepository.GetAll<Product>().Select(x => new ProductDto()
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -32,10 +32,10 @@ namespace _0317_Product_Repository.Services
             return ProductList;
         }
 
-        public ProductViewModel GetProduct(int id)
+        public ProductDto GetProduct(int id)
         {
             var source = _productRepository.GetAll<Product>().First(x => x.Id == id);
-            return new ProductViewModel()
+            return new ProductDto()
             {
                 Name = source.Name,
                 Price = source.Price,

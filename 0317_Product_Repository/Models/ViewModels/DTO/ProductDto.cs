@@ -1,6 +1,6 @@
 ﻿namespace _0317_Product_Repository.Models.ViewModels.DTO
 {
-    public class ProductViewModel
+    public class ProductDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

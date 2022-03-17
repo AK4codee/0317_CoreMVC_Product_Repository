@@ -16,7 +16,7 @@ namespace _0317_Product_Repository.Controllers
         }
         public IActionResult Index()
         {
-            var productList = _DBContext.Products.Select(x => new ProductViewModel()
+            var productList = _DBContext.Products.Select(x => new ProductDto()
             {
                 Name = x.Name,
                 Price = x.Price,
@@ -38,7 +38,7 @@ namespace _0317_Product_Repository.Controllers
         {
             var sourceProduct = _DBContext.Products.First(x => x.Id == id);
 
-            var theProduct = new ProductViewModel()
+            var theProduct = new ProductDto()
             {
                 Name = sourceProduct.Name,
                 Price = sourceProduct.Price,
