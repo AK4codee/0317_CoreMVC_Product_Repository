@@ -39,5 +39,24 @@ namespace _0317_Product_Repository.Controllers
 
             return View(res);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var theProduct = _productService.GetProduct(id);
+            var res = new ProductEditViewModel()
+            {
+                Product = theProduct
+            };
+            return View("ProductEdit",res);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(ProductDto request)
+        {
+            _productService.ProductUpdate(request);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -1,0 +1,20 @@
+﻿@using _0317_Product_Repository.Models.ViewModels.View
+@model ProductEditViewModel
+@{
+    ViewData["Title"] = "ProductEdit";
+}
+
+<h1>Edit</h1>
+
+<form action="Edit" method="post">
+    <lable>id:</lable>
+    <input typeof="text" name="Id" value="@Model.Product.Id"></input>
+    <lable>name:</lable>
+    <input typeof="text" name="Name" value="@Model.Product.Name"></input>
+    <lable>Price:</lable>
+    <input typeof="text" name="Price" value="@Model.Product.Price"></input>
+    <lable>Count:</lable>
+    <input typeof="text" name="Count" value="@Model.Product.Count"></input>
+
+    <button type="submit">Save</button>
+</form>

@@ -37,12 +37,25 @@ namespace _0317_Product_Repository.Services
             var source = _productRepository.GetAll<Product>().First(x => x.Id == id);
             return new ProductDto()
             {
+                Id = source.Id,
                 Name = source.Name,
                 Price = source.Price,
                 Count = source.Count,
                 Tag = source.Price >= 200 ? "Expensive" : "Cheap",
                 IsEmptyStock = source.Count == 0
             };
+        }
+
+        public void ProductUpdate(ProductDto request)
+        {
+            var target = _productRepository.GetAll<Product>().First(x => x.Id == request.Id);
+
+            target.Name = request.Name;
+            target.Price = request.Price;
+            target.Count = request.Count;
+
+            _productRepository.Update(target);
+            _productRepository.Save();
         }
     }
 }

@@ -12,4 +12,9 @@
         <h2>@item.Name</h2>
         <p>@item.Price</p>
     </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">編輯</a> |
+        <a asp-action="ProductDetail" asp-route-id="@item.Id" class="btn btn-success">明細</a> |
+        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">刪除</a>
+    </div>
 }
