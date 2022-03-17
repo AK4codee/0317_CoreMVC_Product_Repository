@@ -63,5 +63,18 @@ namespace _0317_Product_Repository.Services
             var target = _productRepository.GetAll<Product>().First(x => x.Id == id);
             _productRepository.DeleteById(target.Id);
         }
+
+        public void CreateProduct(Product request)
+        {
+            var product = new Product()
+            {
+                Name = request.Name,
+                Price = request.Price,
+                Count = request.Count
+            };
+
+            _productRepository.Create(product);
+            _productRepository.Save();
+        }
     }
 }

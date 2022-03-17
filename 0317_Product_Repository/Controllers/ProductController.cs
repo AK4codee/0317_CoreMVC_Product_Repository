@@ -41,6 +41,19 @@ namespace _0317_Product_Repository.Controllers
         }
 
         [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product request)
+        {
+            _productService.CreateProduct(request);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             var theProduct = _productService.GetProduct(id);
