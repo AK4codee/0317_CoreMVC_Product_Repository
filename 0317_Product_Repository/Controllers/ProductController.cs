@@ -58,5 +58,12 @@ namespace _0317_Product_Repository.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Delete(int id)
+        {
+            _productService.DeleteProduct(id);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
