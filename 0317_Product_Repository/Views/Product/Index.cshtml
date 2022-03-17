@@ -1,0 +1,15 @@
+﻿@using _0317_Product_Repository.Models.ViewModels.View
+@model ProductIndexViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Model.Title</h1>
+
+@foreach(var item in Model.ProductList)
+{
+    <div>
+        <h2>@item.Name</h2>
+        <p>@item.Price</p>
+    </div>
+}

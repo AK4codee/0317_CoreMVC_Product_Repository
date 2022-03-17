@@ -1,0 +1,14 @@
+﻿@model _0317_Product_Repository.Models.ViewModels.View.ProductDetailViewModel
+
+@{
+    ViewData["Title"] = "ProductDetail";
+}
+
+<h1>Product Detail</h1>
+<div>
+    <h2>@Model.Product.Name</h2>
+    <p>@Model.Product.Price</p>
+    <p>@Model.Product.Count</p>
+    <p>@Model.Product.Tag</p>
+    <p>@Model.Product.IsEmptyStock</p>
+</div>
