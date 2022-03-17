@@ -1,16 +1,19 @@
 ﻿using _0317_Product_Repository.Models.DBEntity;
 using _0317_Product_Repository.Models.ViewModels.DTO;
 using _0317_Product_Repository.Repositories;
+using _0317_Product_Repository.Repositories.Interface;
+using _0317_Product_Repository.Services.Interface;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace _0317_Product_Repository.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
-        private readonly ProductRepository _productRepository;
+        // 利用介面去對應實作
+        private readonly IProductRepository _productRepository;
 
-        public ProductService(ProductRepository productRepository)
+        public ProductService(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

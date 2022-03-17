@@ -2,6 +2,7 @@
 using _0317_Product_Repository.Models.ViewModels.DTO;
 using _0317_Product_Repository.Models.ViewModels.View;
 using _0317_Product_Repository.Services;
+using _0317_Product_Repository.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -9,9 +10,9 @@ namespace _0317_Product_Repository.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductService _productService;
+        private readonly IProductService _productService;
 
-        public ProductController(ProductService productService)
+        public ProductController(IProductService productService)
         {
             _productService = productService;
         }

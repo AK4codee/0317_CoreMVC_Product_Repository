@@ -1,10 +1,11 @@
 ﻿using _0317_Product_Repository.Models.DBEntity;
+using _0317_Product_Repository.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace _0317_Product_Repository.Repositories
 {
-    public class DBRepository
+    public class DBRepository : IDBRepository
     {
         private readonly ProductsDBContext _context;
 

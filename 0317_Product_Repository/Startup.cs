@@ -1,6 +1,8 @@
 using _0317_Product_Repository.Models.DBEntity;
 using _0317_Product_Repository.Repositories;
+using _0317_Product_Repository.Repositories.Interface;
 using _0317_Product_Repository.Services;
+using _0317_Product_Repository.Services.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,9 +35,9 @@ namespace _0317_Product_Repository
             });
 
             // µù¥U DI
-            services.AddTransient<DBRepository, DBRepository>();
-            services.AddTransient<ProductRepository, ProductRepository>();
-            services.AddTransient<ProductService, ProductService>();
+            services.AddTransient<IDBRepository, DBRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductService, ProductService>();
 
             services.AddControllersWithViews();
         }
