@@ -1,6 +1,7 @@
 ﻿using _0317_Product_Repository.Models.DBEntity;
 using _0317_Product_Repository.Models.ViewModels.DTO;
 using _0317_Product_Repository.Models.ViewModels.View;
+using _0317_Product_Repository.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -8,22 +9,15 @@ namespace _0317_Product_Repository.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductsDBContext _DBContext;
+        private readonly ProductService _productService;
 
-        public ProductController(ProductsDBContext productsDBContext)
+        public ProductController(ProductService productService)
         {
-            _DBContext = productsDBContext;
+            _productService = productService;
         }
         public IActionResult Index()
         {
-            var productList = _DBContext.Products.Select(x => new ProductDto()
-            {
-                Name = x.Name,
-                Price = x.Price,
-                Count = x.Count,
-                Tag = x.Price >= 200 ? "Expensive" : "Cheap",
-                IsEmptyStock = x.Count == 0
-            });
+            var productList = _productService.GetAllProducts();
 
             var res = new ProductIndexViewModel
             {
@@ -36,20 +30,11 @@ namespace _0317_Product_Repository.Controllers
 
         public IActionResult ProductDetail(int id)
         {
-            var sourceProduct = _DBContext.Products.First(x => x.Id == id);
-
-            var theProduct = new ProductDto()
-            {
-                Name = sourceProduct.Name,
-                Price = sourceProduct.Price,
-                Count = sourceProduct.Count,
-                Tag = sourceProduct.Price >= 200 ? "Expensive" : "Cheap",
-                IsEmptyStock = sourceProduct.Count == 0
-            };
+            var product = _productService.GetProduct(id);
 
             var res = new ProductDetailViewModel()
             {
-                Product = theProduct
+                Product = product
             };
 
             return View(res);
