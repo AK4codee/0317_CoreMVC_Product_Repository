@@ -30,7 +30,7 @@ namespace _0317_Product_Repository.Repositories
             _context.Entry(entity).State = EntityState.Deleted;
         }
 
-        public IQueryable<T> GetAll<T>(T entity) where T : class
+        public IQueryable<T> GetAll<T>() where T : class
         {
             return _context.Set<T>();
         }
