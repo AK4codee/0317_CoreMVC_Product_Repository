@@ -1,4 +1,4 @@
-﻿namespace _0317_Product_Repository.Models.ViewModel.DTO
+﻿namespace _0317_Product_Repository.Models.DTO
 {
     public class ProductDto
     {

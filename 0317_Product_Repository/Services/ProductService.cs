@@ -1,5 +1,5 @@
 ﻿using _0317_Product_Repository.Models.DBEntity;
-using _0317_Product_Repository.Models.ViewModel.DTO;
+using _0317_Product_Repository.Models.DTO;
 using _0317_Product_Repository.Repositories.Interface;
 using _0317_Product_Repository.Services.Interface;
 using System.Collections.Generic;
