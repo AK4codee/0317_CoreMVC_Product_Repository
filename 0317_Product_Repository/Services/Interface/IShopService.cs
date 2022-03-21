@@ -6,16 +6,12 @@ namespace _0317_Product_Repository.Services.Interface
     public interface IShopService
     {
         public IEnumerable<ShopDto> GetAllShops();
-
-        public IEnumerable<ShopDto> GetShopsWithNoProducts();
-
+        public IEnumerable<ProductDto> GetShopProduct(int id);
         public ShopDto GetTheShop(int id);
 
         public void CreateShop(ShopDto request);
 
         public void UpdateShop(ShopDto request);
-
-        public void DeleteAllProductsInShop(int id);
 
         public void DeleteShop(int id);
     }

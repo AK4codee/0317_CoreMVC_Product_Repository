@@ -1,4 +1,8 @@
 using _0317_Product_Repository.Models;
+using _0317_Product_Repository.Repository;
+using _0317_Product_Repository.Repository.Interface;
+using _0317_Product_Repository.Services;
+using _0317_Product_Repository.Services.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +28,11 @@ namespace _0317_Product_Repository
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IDBRepository, DBRepository>();
+            services.AddTransient<IShopRepository, ShopRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IShopService, ShopService>();
             services.AddDbContext<ProductsDBContext>();
             services.AddControllersWithViews();
         }

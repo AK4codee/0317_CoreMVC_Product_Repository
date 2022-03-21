@@ -28,15 +28,6 @@ namespace _0317_Product_Repository.Services
 
         }
 
-        public void DeleteAllProductsInShop(int id)
-        {
-            var target = _context.GetAll<Shop>().First(x => x.ShopId == id);
-            target.Products.Clear();
-
-            _context.Update(target);
-            _context.Save();
-        }
-
         public void DeleteShop(int id)
         {
             var target = _context.GetAll<Shop>().First(x => x.ShopId == id);
@@ -47,30 +38,33 @@ namespace _0317_Product_Repository.Services
 
         public IEnumerable<ShopDto> GetAllShops()
         {
-            var shoplist = _context.GetAll<Shop>().Select(x => new ShopDto
+            var shoplist = _context.GetAll<Shop>().Select(x => new ShopDto()
             {
                 ShopId = x.ShopId,
                 ShopName = x.ShopName,
                 Owner = x.Owner,
                 IsNoProduct = x.Products.Count() == 0,
-                Products = (ICollection<ProductDto>)x.Products
+                Products = x.Products
             });
 
             return shoplist;
         }
 
-        public IEnumerable<ShopDto> GetShopsWithNoProducts()
+        public IEnumerable<ProductDto> GetShopProduct(int id)
         {
-            var shoplist = _context.GetAll<Shop>().Where(x => x.Products.Count == 0).Select(x => new ShopDto
+            
+            var shop = _context.GetAll<Shop>().First(x => x.ShopId == id);
+            var products = _context.GetAll<Product>().Where(x => x.ShopId == id).Select(x => new ProductDto()
             {
-                ShopId = x.ShopId,
-                ShopName = x.ShopName,
-                Owner = x.Owner,
-                IsNoProduct = x.Products.Count() == 0,
-                Products = (ICollection<ProductDto>)x.Products
+                Id = x.Id,
+                Name = x.Name,
+                Price = x.Price,
+                Count = x.Count,
+                Tag = x.Price > 1000 ? "Expensice" : "Cheap",
+                ShopId = shop.ShopId
             });
 
-            return shoplist;
+            return products;
         }
 
         public ShopDto GetTheShop(int id)
@@ -83,7 +77,7 @@ namespace _0317_Product_Repository.Services
                 ShopName = shop.ShopName,
                 Owner = shop.Owner,
                 IsNoProduct = shop.Products.Count() == 0,
-                Products = (ICollection<ProductDto>)shop.Products
+                Products = shop.Products
             };
         }
 

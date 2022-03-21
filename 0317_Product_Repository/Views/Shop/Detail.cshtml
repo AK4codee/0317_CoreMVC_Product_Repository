@@ -1,0 +1,15 @@
+﻿@using _0317_Product_Repository.Models.ViewModel
+@model ShopDetailViewModel
+
+<h2>@Model.Title</h2>
+<h3>@Model.Shop.ShopName</h3>
+<h3>@Model.Shop.Owner</h3>
+
+<p>產品列表</p>
+@foreach(var item in Model.ProductList){
+    <div>
+        <h5>@item.Name</h5>
+        <p>@item.Price</p>
+        <a  asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success">產品明細</a>
+    </div>
+}

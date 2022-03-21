@@ -8,6 +8,6 @@ namespace _0317_Product_Repository.Models.DTO
         public string ShopName { get; set; }
         public string Owner { get; set; }
         public bool IsNoProduct { get; set; }
-        public virtual ICollection<ProductDto> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
