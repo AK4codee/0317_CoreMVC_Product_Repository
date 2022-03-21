@@ -1,0 +1,17 @@
+﻿@using _0317_Product_Repository.Models.ViewModel.View
+@model ProductIndexViewModel
+
+<h2>@Model.Title</h2>
+<p>@Model.Description</p>
+
+<ul>
+    @foreach(var item in Model.productlist){
+        <li>
+            <div>
+                <h5>@item.Name</h5>
+                <p>@item.Price</p>
+                <p>@item.Count</p>
+            </div>
+        </li>
+    }
+</ul>

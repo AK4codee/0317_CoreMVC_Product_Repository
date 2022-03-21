@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using _0317_Product_Repository.Models.ViewModel.DTO;
 
 #nullable disable
 
@@ -45,5 +46,7 @@ namespace _0317_Product_Repository.Models.DBEntity
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<_0317_Product_Repository.Models.ViewModel.DTO.ProductDto> ProductDto { get; set; }
     }
 }
