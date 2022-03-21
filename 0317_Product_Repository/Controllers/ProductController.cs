@@ -17,6 +17,7 @@ namespace _0317_Product_Repository.Controllers
         {
             var productlist = _service.GetAllProducts().Select(x => new ProductIndexViewModel.ProductData
             {
+                Id = x.Id,
                 Name = x.Name,
                 Price = x.Price,
                 Count = x.Count
@@ -26,6 +27,27 @@ namespace _0317_Product_Repository.Controllers
                 Title = "產品目錄",
                 Description = "產品目錄",
                 productlist = productlist
+            };
+
+            return View(res);
+        }
+
+        public IActionResult Detail(int id)
+        {
+            var productDto = _service.GetProduct(id);
+            var productDetail = new ProductDetailViewModel.ProductData
+            {
+                Name = productDto.Name,
+                Price = productDto.Price,
+                Count = productDto.Count,
+                Tag = productDto.Tag,
+                IsEmptyStock = productDto.IsEmptyStock
+            };
+
+            var res = new ProductDetailViewModel
+            {
+                Title = $"{productDetail.Name}的詳細資訊",
+                Product = productDetail
             };
 
             return View(res);

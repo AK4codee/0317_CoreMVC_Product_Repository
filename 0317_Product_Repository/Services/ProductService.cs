@@ -45,7 +45,7 @@ namespace _0317_Product_Repository.Services
         public ProductDto GetProduct(int id)
         {
             var target = _repository.GetAll<Product>().FirstOrDefault(x => x.Id == id);
-            return new ProductDto
+            var product = new ProductDto()
             {
                 Id = target.Id,
                 Name = target.Name,
@@ -54,6 +54,8 @@ namespace _0317_Product_Repository.Services
                 Tag = target.Price >= 200 ? "Expensive" : "Cheap",
                 IsEmptyStock = target.Count == 0
             };
+
+            return product;
         }
 
         public void ProductDelete(int id)
