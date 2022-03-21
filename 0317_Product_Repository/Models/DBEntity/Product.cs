@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace _0317_Product_Repository.Models.DBEntity
+namespace _0317_Product_Repository.Models
 {
     public partial class Product
     {
@@ -11,5 +11,8 @@ namespace _0317_Product_Repository.Models.DBEntity
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int Count { get; set; }
+        public int ShopId { get; set; }
+
+        public virtual Shop Shop { get; set; }
     }
 }
