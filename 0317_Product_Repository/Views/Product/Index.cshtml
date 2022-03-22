@@ -1,0 +1,12 @@
+﻿@using _0317_Product_Repository.Models.ViewModel
+@model ProductIndexViewModel
+
+<h2>@Model.Title</h2>
+
+@foreach(var item in @Model.productlist){
+    <div>
+        <h5>@item.Name</h5>
+        <p>@item.Price</p>
+    </div>
+    <a asp-action="Detail" asp-route-id="@item.Id" class="btn btn-success">明細</a>
+}

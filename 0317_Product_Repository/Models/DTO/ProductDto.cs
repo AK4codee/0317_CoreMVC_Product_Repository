@@ -7,6 +7,6 @@
         public decimal Price { get; set; }
         public int Count { get; set; }
         public string Tag { get; set; }
-        public bool IdEmptyStock { get; set; }
+        public bool IsEmptyStock { get; set; }
     }
 }

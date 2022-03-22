@@ -45,7 +45,7 @@ namespace _0317_Product_Repository.Services
                 Price = x.Price,
                 Count = x.Count,
                 Tag = x.Price > 1000 ? "Expensive" : "Cheap",
-                IdEmptyStock = x.Count == 0
+                IsEmptyStock = x.Count == 0
             });
 
             return productlist;
@@ -62,7 +62,7 @@ namespace _0317_Product_Repository.Services
                 Price = target.Price,
                 Count = target.Count,
                 Tag = target.Price > 1000 ? "Expensive" : "Cheap",
-                IdEmptyStock = target.Count == 0
+                IsEmptyStock = target.Count == 0
             };
         }
 
